@@ -1,4 +1,5 @@
 import React from 'react';
+import '../sass/main.sass';
 
 var Component = React.createClass({
   render: function () {
@@ -6,7 +7,10 @@ var Component = React.createClass({
       this.props.onRender();
     }
     return (
-      <p>Hello world blabla yo yoyoyo</p>
+      <div>
+        <h1>Yo h1</h1>
+        <p>Hello world blabla yo yoyoyo</p>
+      </div>
     );
   },
   propTypes: {
