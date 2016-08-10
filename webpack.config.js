@@ -21,17 +21,18 @@ if (env === 'build') {
 }
 
 var config = {
-  entry: './src/components/index.js',
+  // entry: './src/components/index.js',
+  context: __dirname,
+  entry: {
+    app: "./src/components/index.js",
+    vendors: ['jquery']
+  },
   devtool: 'source-map',
   output: {
     path: __dirname + '/dist/',
     filename: outputFile,
     // publicPath: __dirname + '/example'
-    
-    
     publicPath: './'
-  
-  
   },
   module: {
     loaders: [
