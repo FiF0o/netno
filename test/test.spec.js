@@ -1,4 +1,4 @@
-import Component from '../src/Component.jsx';
+import Component from '../src/components/Component.jsx';
 import TestUtils from 'react-addons-test-utils';
 import React from 'react';
 
