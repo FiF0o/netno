@@ -1,4 +1,15 @@
+/*
+ local to where the bootstrap is included
+ Needs to reassign var otherwise path cant be loaded by webpack sass-loader and having the var pointing to where the font dir is...
+ */
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/'
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss'
 
 
 h1
-  color: orange
+  color: red
+  font-size: 400px
+
+
+.well
+  background-color: $brand-danger

@@ -10,6 +10,9 @@ var Component = React.createClass({
       <div>
         <h1>Yo h1</h1>
         <p>Hello world blabla yo yfgsgfdgfdfgdoyoyo</p>
+        <div className="well">
+          well here
+        </div>
       </div>
     );
   },

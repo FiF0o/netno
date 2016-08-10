@@ -25,7 +25,7 @@ var config = {
   context: __dirname,
   entry: {
     app: "./src/components/index.js",
-    vendors: ['jquery']
+    vendors: ['jquery', ]
   },
   devtool: 'source-map',
   output: {
