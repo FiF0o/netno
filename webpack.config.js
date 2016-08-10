@@ -15,18 +15,23 @@ var plugins = [], outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
-  outputFile = appName + '.min.js';
+  outputFile = appName + '.[name].min.js';
 } else {
-  outputFile = appName + '.js';
+  outputFile = appName + '.[name].js';
 }
 
 var config = {
   entry: './src/components/index.js',
   devtool: 'source-map',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/dist/',
     filename: outputFile,
     // publicPath: __dirname + '/example'
+    
+    
+    publicPath: './'
+  
+  
   },
   module: {
     loaders: [

@@ -6,7 +6,7 @@ var Component = React.createClass({
       this.props.onRender();
     }
     return (
-      <p>Hello world</p>
+      <p>Hello world blabla yo yoyoyo</p>
     );
   },
   propTypes: {
