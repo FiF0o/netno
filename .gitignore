@@ -3,6 +3,7 @@ node_modules
 npm-debug.log
 public
 tmp
+.idea
 
 # Created by https://www.gitignore.io
 
