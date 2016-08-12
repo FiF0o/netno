@@ -1,4 +1,4 @@
-import Main from '../src/components/Main.js';
+import Main from '../src/app/components/Main.js';
 import TestUtils from 'react-addons-test-utils';
 import React from 'react';
 
