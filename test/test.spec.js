@@ -1,14 +1,14 @@
-import Component from '../src/components/Component.jsx';
+import Main from '../src/components/Main.js';
 import TestUtils from 'react-addons-test-utils';
 import React from 'react';
 
 var component;
 var spy = sinon.spy();
 
-describe('Given an instance of the Component', () => {
+describe('Given an instance of the Main', () => {
   describe('when we render the component', () => {
     before(() => {
-      component = TestUtils.renderIntoDocument(<Component onRender={ spy } />);
+      component = TestUtils.renderIntoDocument(<Main onRender={ spy } />);
     });
     it('should render a paragraph', () => {
       var paragraph = TestUtils.scryRenderedDOMComponentsWithTag(component, 'p');

@@ -28,11 +28,24 @@ var config = {
     vendors: ['jquery', ]
   },
   devtool: 'source-map',
+  
+  // devServer: {
+  //   // needs contentBase to tell webpack where the content is served
+  //   contentBase: path.join(__dirname, 'dist/'),
+  //   inline: true,
+  //   stats: 'minimal',
+  //   port: port
+  // },
+  
   output: {
     path: __dirname + '/dist/',
     filename: outputFile,
     // publicPath: __dirname + '/example'
     publicPath: './'
+  },
+  eslint: {
+    configFile: './.eslintrc',  //your .eslintrc file 
+    emitWarning: true
   },
   module: {
     loaders: [
@@ -121,8 +134,11 @@ var config = {
 
 if (env === 'dev') {
   new WebpackDevServer(webpack(config), {
-    contentBase: './example',
-    hot: true,
+    // contentBase: './example',
+    // contentBase: path.join(__dirname, 'dist'),
+    contentBase: './dist',
+    // hot: true,
+    inline: true,
     debug: true
   }).listen(port, host, function (err, result) {
     if (err) {
