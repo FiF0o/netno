@@ -1,4 +1,5 @@
 import React from 'react';
+// import '../../../bower_components/font-awesome/scss/font-awesome.scss';
 import '../../sass/main.sass';
 
 class Main extends React.Component {
@@ -9,6 +10,7 @@ class Main extends React.Component {
         <div>
           NAV will be in this bloc
           <h1>Yo h1</h1>
+          <span className='glyphicon glyphicon-search' aria-hidden='true'></span>
           <p>Hello world</p>
           <div className='well'>
             well here

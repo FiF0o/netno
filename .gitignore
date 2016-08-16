@@ -4,6 +4,7 @@ npm-debug.log
 public
 tmp
 .idea
+tweeterToken.json
 
 # Created by https://www.gitignore.io
 

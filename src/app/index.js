@@ -12,5 +12,4 @@ window.onload = () => {
     </Router>,
     appEntry
   );
-
 };

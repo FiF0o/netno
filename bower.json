@@ -1,0 +1,23 @@
+{
+  "name": "react-webpack-starter",
+  "description": "React webpack starter template",
+  "main": "lib/index.js",
+  "authors": [
+    "[object Object]"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "carousel",
+    "responsive"
+  ],
+  "homepage": "https://github.com/FiF0o/netno",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
