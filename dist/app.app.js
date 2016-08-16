@@ -27319,15 +27319,6 @@
 	console.log("cb:", cb);
 	// cb.setConsumerKey("YOURKEY", "YOURSECRET");
 	
-	/* Twitter
-	 - -
-	 key: 	qrVsXyVBHIRPwHvxBkXjDTZfz
-	 secret: Izgvklu092Z2i05CTulxzl4n3A6IVi3gkjRUFLXaTRBM2OWNz6
-	 Access token: 159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT
-	 access token secret: hsJ4TJgKGJS9EJJAn7UYMECq7KvUNcsM4HKV16XL0jAuE
-	 request url: https://api.twitter.com/1.1/
-	 - -
-	 */
 	
 	var Project = function (_React$Component) {
 	  _inherits(Project, _React$Component);

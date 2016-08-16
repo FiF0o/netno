@@ -5,6 +5,7 @@ public
 tmp
 .idea
 tweeterToken.json
+bower_components
 
 # Created by https://www.gitignore.io
 
