@@ -4,7 +4,7 @@ npm-debug.log
 public
 tmp
 .idea
-tweeterToken.json
+tweeterToken.js
 bower_components
 src/app/utils/tweeterToken.json
 

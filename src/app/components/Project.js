@@ -7,7 +7,6 @@ import React from 'react';
 import firebase from 'firebase';
 import Rebase from 're-base';
 import Codebird from 'Codebird';
-console.log('Codebird:', Codebird);
 
 // Initialize Firebase
 var config = {
@@ -19,14 +18,26 @@ var config = {
 firebase.initializeApp(config);
 
 const base = Rebase.createClass(config.databaseURL);
-console.log("base", base);
+
+import { token } from '../utils/tweeterToken.js'
 const cb = new Codebird;
-console.log("cb:", cb);
-// cb.setConsumerKey("YOURKEY", "YOURSECRET");
+// authentications
+cb.setConsumerKey(token.key, token.secret);
 
 
+const args = {q: "o2", count: 10};
 
-import Tweets from './Tweets'
+cb.__call(
+  "search_tweets", //Pick twitter API endpoint
+  args,
+  function (reply) {
+    console.log(reply)
+  },
+  true // this parameter required by codebird
+);
+
+
+import Tweets from './Tweets';
 
 export default class Project extends React.Component {
   constructor(props) {
@@ -34,23 +45,20 @@ export default class Project extends React.Component {
     this.state = {
       user: {},
       project: {},
-      tweets: ["tweet1", "tweet2", "tweet3"]
+      tweets: [1, 2, 3, 4]
     };
   }
   componentDidMount() {
-    this._base = base.bindToState(this.props.params.username, {
+    this._base = base.bindToState(`${this.props.params.username}/tweets`, {
       context: this,
       asArray: true,
       state: 'tweets'
     });
-    console.log("this._base: ", this._base);
   }
   componentWillUnmount() {
     base.removeBinding(this._base);
   }
   render() {
-    console.log("url", `${config.databaseURL}/${this.props.params.username}`);
-    console.log("tweets:", this.state.tweets);
     console.log("PROJECT: this:", this);
     return (
       <div>

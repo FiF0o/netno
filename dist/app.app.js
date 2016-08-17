@@ -27138,7 +27138,7 @@
 	  { path: '/', component: _Main2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'profile/:username', component: _Project2.default })
+	  _react2.default.createElement(_reactRouter.Route, { path: 'profile/:username/tweets', component: _Project2.default })
 	);
 
 /***/ },
@@ -27738,6 +27738,8 @@
 	
 	var _Codebird2 = _interopRequireDefault(_Codebird);
 	
+	var _tweeterToken = __webpack_require__(270);
+	
 	var _Tweets = __webpack_require__(266);
 	
 	var _Tweets2 = _interopRequireDefault(_Tweets);
@@ -27752,8 +27754,6 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by jonlazarini on 12/08/16.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
-	console.log('Codebird:', _Codebird2.default);
-	
 	// Initialize Firebase
 	var config = {
 	  apiKey: "AIzaSyC0thHB-lYhF-1_ZbPIXzg1XeoD5Ktx7HM",
@@ -27764,11 +27764,18 @@
 	_firebase2.default.initializeApp(config);
 	
 	var base = _reBase2.default.createClass(config.databaseURL);
-	console.log("base", base);
-	var cb = new _Codebird2.default();
-	console.log("cb:", cb);
-	// cb.setConsumerKey("YOURKEY", "YOURSECRET");
 	
+	var cb = new _Codebird2.default();
+	// authentications
+	cb.setConsumerKey(_tweeterToken.token.key, _tweeterToken.token.secret);
+	
+	var args = { q: "o2", count: 10 };
+	
+	cb.__call("search_tweets", //Pick twitter API endpoint
+	args, function (reply) {
+	  console.log(reply);
+	}, true // this parameter required by codebird
+	);
 	
 	var Project = function (_React$Component) {
 	  _inherits(Project, _React$Component);
@@ -27781,7 +27788,7 @@
 	    _this.state = {
 	      user: {},
 	      project: {},
-	      tweets: ["tweet1", "tweet2", "tweet3"]
+	      tweets: [1, 2, 3, 4]
 	    };
 	    return _this;
 	  }
@@ -27789,12 +27796,11 @@
 	  _createClass(Project, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this._base = base.bindToState(this.props.params.username, {
+	      this._base = base.bindToState(this.props.params.username + '/tweets', {
 	        context: this,
 	        asArray: true,
 	        state: 'tweets'
 	      });
-	      console.log("this._base: ", this._base);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -27804,8 +27810,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log("url", config.databaseURL + '/' + this.props.params.username);
-	      console.log("tweets:", this.state.tweets);
 	      console.log("PROJECT: this:", this);
 	      return _react2.default.createElement(
 	        'div',
@@ -30920,6 +30924,28 @@
 	}(_react2.default.Component);
 	
 	exports.default = TweetList;
+
+/***/ },
+/* 268 */,
+/* 269 */,
+/* 270 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	/**
+	 * Created by jonlazarini on 16/08/16.
+	 */
+	
+	module.exports = {
+	  token: {
+	    key: "qrVsXyVBHIRPwHvxBkXjDTZfz",
+	    secret: "Izgvklu092Z2i05CTulxzl4n3A6IVi3gkjRUFLXaTRBM2OWNz6",
+	    accessToken: "159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",
+	    accessTokenSecret: "hsJ4TJgKGJS9EJJAn7UYMECq7KvUNcsM4HKV16XL0jAuE",
+	    requestUrl: "https://api.twitter.com/1.1/"
+	  }
+	};
 
 /***/ }
 /******/ ]);

@@ -14,6 +14,6 @@ export default (
   <Route path='/' component={ Main }>
     <IndexRoute component={ Home } />
     <Route path='login' component={ Login }/>
-    <Route path='profile/:username' component={ Project } />
+    <Route path='profile/:username/tweets' component={ Project } />
   </Route>
 );
