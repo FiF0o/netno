@@ -7,10 +7,13 @@ import TweetList from './TweetList';
 
 export default class Tweets extends React.Component {
   render() {
-    console.log('this.props.tweets', this.props.tweets);
+    console.log('this.props in Tweets', this.props);
     return (
       <div>
-        <TweetList tweets={ this.props.tweets } />
+        <TweetList
+          tweets={ this.props.tweets }
+          statuses={ this.props.statuses }
+        />
       </div>
     );
   }

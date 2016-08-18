@@ -5,7 +5,7 @@ import React from 'react';
 
 export default class TweetList extends React.Component {
   render() {
-    console.log('this.props', this.props);
+    console.log('this.props in TweetList', this.props);
     const tweetList = this.props.tweets.map((tweet, index) => {
       // must use => <Object> instead of { } if we are returning one object
       // only.
@@ -16,10 +16,19 @@ export default class TweetList extends React.Component {
         </li>
       );
     });
+
+    const statuses = this.props.statuses.map((status, index) => <li key={ index }> { status } </li>);
+
     return (
-      <ul>
-        { tweetList }
-      </ul>
+      <div>
+        <ul>
+          { tweetList }
+        </ul>
+        <ul>
+          { statuses }
+        </ul>
+      </div>
+
     );
   }
 }

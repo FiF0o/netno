@@ -46,14 +46,21 @@ export default class Project extends React.Component {
     this.state = {
       user: {},
       project: {},
-      tweets: [1, 2, 3, 4],
+      /*
+      stores tweets from twitter API to firebase DB, can't be encapsulated
+       when using re-base
+      */
+      tweetsFromServer: [],
+      // renders tweets from twitterAPI
+      statuses: ["status1","status2"],
+
     };
   }
   componentDidMount() {
     this._base = base.bindToState(`${this.props.params.username}/tweets`, {
       context: this,
       asArray: true,
-      state: 'tweets',
+      state: 'tweetsFromServer',
     });
   }
   componentWillUnmount() {
@@ -63,7 +70,10 @@ export default class Project extends React.Component {
     console.log("PROJECT: this:", this);
     return (
       <div>
-        <Tweets tweets={ this.state.tweets }/>
+        <Tweets
+          tweets={ this.state.tweetsFromServer }
+          statuses={ this.state.statuses }
+        />
         Project placeholder here
       </div>
     );

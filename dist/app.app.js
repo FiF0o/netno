@@ -27784,7 +27784,14 @@
 	    _this.state = {
 	      user: {},
 	      project: {},
-	      tweets: [1, 2, 3, 4]
+	      /*
+	      stores tweets from twitter API to firebase DB, can't be encapsulated
+	       when using re-base
+	      */
+	      tweetsFromServer: [],
+	      // renders tweets from twitterAPI
+	      statuses: ["status1", "status2"]
+	
 	    };
 	    return _this;
 	  }
@@ -27795,7 +27802,7 @@
 	      this._base = base.bindToState(this.props.params.username + '/tweets', {
 	        context: this,
 	        asArray: true,
-	        state: 'tweets'
+	        state: 'tweetsFromServer'
 	      });
 	    }
 	  }, {
@@ -27810,7 +27817,10 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_Tweets2.default, { tweets: this.state.tweets }),
+	        _react2.default.createElement(_Tweets2.default, {
+	          tweets: this.state.tweetsFromServer,
+	          statuses: this.state.statuses
+	        }),
 	        'Project placeholder here'
 	      );
 	    }
@@ -29325,11 +29335,14 @@
 	  _createClass(Tweets, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log('this.props.tweets', this.props.tweets);
+	      console.log('this.props in Tweets', this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_TweetList2.default, { tweets: this.props.tweets })
+	        _react2.default.createElement(_TweetList2.default, {
+	          tweets: this.props.tweets,
+	          statuses: this.props.statuses
+	        })
 	      );
 	    }
 	  }]);
@@ -29380,7 +29393,7 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      console.log('this.props', this.props);
+	      console.log('this.props in TweetList', this.props);
 	      var tweetList = this.props.tweets.map(function (tweet, index) {
 	        // must use => <Object> instead of { } if we are returning one object
 	        // only.
@@ -29391,10 +29404,30 @@
 	          tweet
 	        );
 	      });
+	
+	      var statuses = this.props.statuses.map(function (status, index) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: index },
+	          ' ',
+	          status,
+	          ' '
+	        );
+	      });
+	
 	      return _react2.default.createElement(
-	        'ul',
+	        'div',
 	        null,
-	        tweetList
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          tweetList
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          statuses
+	        )
 	      );
 	    }
 	  }]);
