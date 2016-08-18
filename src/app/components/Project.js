@@ -6,38 +6,39 @@ import React from 'react';
 
 import firebase from 'firebase';
 import Rebase from 're-base';
-import Codebird from 'Codebird';
+import Codebird from 'codebird';
+import Tweets from './Tweets';
+
+import { token } from '../utils/tweeterToken.js';
 
 // Initialize Firebase
-var config = {
+const config = {
   apiKey: "AIzaSyC0thHB-lYhF-1_ZbPIXzg1XeoD5Ktx7HM",
   authDomain: "netnographr.firebaseapp.com",
   databaseURL: "https://netnographr.firebaseio.com",
   storageBucket: "netnographr.appspot.com",
 };
 firebase.initializeApp(config);
-
 const base = Rebase.createClass(config.databaseURL);
 
-import { token } from '../utils/tweeterToken.js'
-const cb = new Codebird;
+
+const cb = new Codebird();
 // authentications
 cb.setConsumerKey(token.key, token.secret);
 
 
-const args = {q: "o2", count: 10};
+const args = { q: "o2", count: 10 };
 
 cb.__call(
-  "search_tweets", //Pick twitter API endpoint
+  // Pick twitter API endpoint
+  "search_tweets",
   args,
-  function (reply) {
-    console.log(reply)
+  (reply) => {
+    console.log(reply);
   },
-  true // this parameter required by codebird
+  // this parameter required by codebird
+  true
 );
-
-
-import Tweets from './Tweets';
 
 export default class Project extends React.Component {
   constructor(props) {
@@ -45,14 +46,14 @@ export default class Project extends React.Component {
     this.state = {
       user: {},
       project: {},
-      tweets: [1, 2, 3, 4]
+      tweets: [1, 2, 3, 4],
     };
   }
   componentDidMount() {
     this._base = base.bindToState(`${this.props.params.username}/tweets`, {
       context: this,
       asArray: true,
-      state: 'tweets'
+      state: 'tweets',
     });
   }
   componentWillUnmount() {
@@ -67,4 +68,4 @@ export default class Project extends React.Component {
       </div>
     );
   }
-};
+}

@@ -11,11 +11,10 @@ export default class Login extends React.Component {
     };
   }
   render() {
-    console.log('LOGIN: this:', this);
     return (
       <div>
         LOGIN
       </div>
     );
   }
-};
+}

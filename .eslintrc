@@ -41,6 +41,9 @@
     "no-else-return": 0,
     "no-param-reassign": 0,
     "quotes": 0,
-    "react/jsx-uses-vars": 1
+    "react/jsx-uses-vars": 1,
+    "no-underscore-dangle": 1,
+    "no-console": 1
+
   }
 }

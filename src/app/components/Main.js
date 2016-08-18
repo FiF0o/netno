@@ -22,8 +22,8 @@ class Main extends React.Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 React.propTypes = {
   // children: React.PropTypes.element.isRequired
