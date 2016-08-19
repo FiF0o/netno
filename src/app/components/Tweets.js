@@ -13,6 +13,7 @@ export default class Tweets extends React.Component {
         <TweetList
           tweets={ this.props.tweets }
           statuses={ this.props.statuses }
+          getTweets={ this.props.searchTweets }
         />
       </div>
     );

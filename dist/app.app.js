@@ -62,7 +62,6 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	console.log('');
 	var appEntry = document.getElementById('container');
 	
 	_reactDom2.default.render(_react2.default.createElement(
@@ -27115,30 +27114,32 @@
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Home = __webpack_require__(249);
+	var _Home = __webpack_require__(250);
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Login = __webpack_require__(250);
+	var _Login = __webpack_require__(251);
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
-	var _Project = __webpack_require__(251);
+	var _Project = __webpack_require__(252);
 	
 	var _Project2 = _interopRequireDefault(_Project);
 	
+	var _Error = __webpack_require__(270);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	/**
-	 * Created by jonlazarini on 12/08/16.
-	 */
 	exports.default = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _Main2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'profile/:username/tweets', component: _Project2.default })
-	);
+	  _react2.default.createElement(_reactRouter.Route, { path: 'profile/:username/tweets', component: _Project2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '404-error', component: _Error.Error404 })
+	); /**
+	    * Created by jonlazarini on 12/08/16.
+	    */
 
 /***/ },
 /* 239 */
@@ -27157,6 +27158,10 @@
 	var _react2 = _interopRequireDefault(_react);
 	
 	__webpack_require__(240);
+	
+	var _SearchTweets = __webpack_require__(249);
+	
+	var _SearchTweets2 = _interopRequireDefault(_SearchTweets);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -27185,26 +27190,16 @@
 	        'div',
 	        { className: 'container-fluid' },
 	        _react2.default.createElement(
-	          'div',
-	          null,
-	          'NAV will be in this bloc',
-	          _react2.default.createElement(
-	            'h1',
-	            null,
-	            'Yo h1'
-	          ),
-	          _react2.default.createElement('span', { className: 'glyphicon glyphicon-search', 'aria-hidden': 'true' }),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            'Hello world'
-	          ),
+	          'nav',
+	          { className: 'navbar navbar-default', role: 'navigation' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'well' },
-	            'well here'
-	          ),
-	          'NAV will be in this bloc'
+	            { className: 'col-sm-7 col-sm-offset-2', style: { marginTop: 15 } },
+	            _react2.default.createElement(_SearchTweets2.default, {
+	              history: this.props.history,
+	              routes: this.props.params
+	            })
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -27608,6 +27603,116 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by jonlazarini on 18/08/16.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	
+	var SearchTweets = function (_React$Component) {
+	  _inherits(SearchTweets, _React$Component);
+	
+	  function SearchTweets(props) {
+	    _classCallCheck(this, SearchTweets);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SearchTweets).call(this, props));
+	
+	    _this.state = {
+	      // stores username to pass it down in route url
+	      username: _this.props.routes
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(SearchTweets, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      console.log('SearchTweets - this:', this);
+	      // console.log("this.state.username", this.state.username);
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-sm-12' },
+	        _react2.default.createElement(
+	          'form',
+	          { action: '', onSubmit: function onSubmit() {
+	              return _this2._handleSubmit();
+	            } },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group col-sm-7' },
+	            _react2.default.createElement('input', { type: 'text', className: 'form-control', ref: function ref(input) {
+	                return _this2._tweetQuery = input;
+	              } })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group col-sm-5' },
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'submit', className: 'btn btn-block btn-primary' },
+	              'Search'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: '_handleSubmit',
+	    value: function _handleSubmit() {
+	      var tweetQuery = this._tweetQuery.value;
+	      this._tweetQuery = '';
+	      console.log('tweetQuery in SEARCH BOX:', tweetQuery);
+	      // TODO See whether updating endpoint on query is required, perhaps for
+	      // saving to the server
+	      // const username = this.state.username;
+	      // console.log('route on search query: ', `/profile/${username}/tweets/${tweetQuery}`);
+	      // this.context.router.push(`/profile/${username}/tweets/?q=${tweetQuery}`);
+	    }
+	  }]);
+	
+	  return SearchTweets;
+	}(_react2.default.Component);
+	
+	/*
+	  Use PropTypes validation to share Router properties (history,
+	   routes and context) so that we can access our url routes for updating end
+	    point in _handleSubmit()
+	*/
+	
+	
+	SearchTweets.PropTypes = {
+	  history: _react2.default.PropTypes.object.isRequired
+	};
+	/* needs to be added for this.context to work properly and not be returned as an empty object */
+	SearchTweets.contextTypes = {
+	  router: _react2.default.PropTypes.object.isRequired
+	};
+	
+	exports.default = SearchTweets;
+
+/***/ },
+/* 250 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27642,7 +27747,7 @@
 	          'h2',
 	          { className: 'text-center' },
 	          this.props.title,
-	          'Search section here'
+	          'Home component is here'
 	        )
 	      );
 	    }
@@ -27652,7 +27757,7 @@
 	}(React.Component);
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27706,7 +27811,7 @@
 	exports.default = Login;
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27721,15 +27826,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _firebase = __webpack_require__(252);
+	var _firebase = __webpack_require__(253);
 	
 	var _firebase2 = _interopRequireDefault(_firebase);
 	
-	var _reBase = __webpack_require__(254);
+	var _reBase = __webpack_require__(255);
 	
 	var _reBase2 = _interopRequireDefault(_reBase);
 	
-	var _codebird = __webpack_require__(270);
+	var _codebird = __webpack_require__(258);
 	
 	var _codebird2 = _interopRequireDefault(_codebird);
 	
@@ -27737,7 +27842,7 @@
 	
 	var _Tweets2 = _interopRequireDefault(_Tweets);
 	
-	var _tweeterToken = __webpack_require__(266);
+	var _tweeterToken = __webpack_require__(269);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -27782,6 +27887,10 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props));
 	
 	    _this.state = {
+	      tweetRequest: {
+	        q: "o2",
+	        count: 10
+	      },
 	      user: {},
 	      project: {},
 	      /*
@@ -27790,7 +27899,19 @@
 	      */
 	      tweetsFromServer: [],
 	      // renders tweets from twitterAPI
-	      statuses: ["status1", "status2"]
+	      statuses: [{
+	        id_str: "766320531608002560",
+	        created_at: "Thu Aug 18 17:07:06 +0000 2016",
+	        retweet_count: 0,
+	        text: "@O2 issue is I can't buy a fing phone from u!!",
+	        user: {}
+	      }, {
+	        id_str: "766320531608002561",
+	        created_at: "Thu Aug 18 17:07:06 +0000 2017",
+	        retweet_count: 1,
+	        text: "@O2 issue is I can't buy a fing phone from u!!",
+	        user: {}
+	      }]
 	
 	    };
 	    return _this;
@@ -27813,26 +27934,70 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      console.log("PROJECT: this:", this);
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        _react2.default.createElement(_Tweets2.default, {
-	          tweets: this.state.tweetsFromServer,
-	          statuses: this.state.statuses
-	        }),
-	        'Project placeholder here'
+	        { className: 'container' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-md-12' },
+	          _react2.default.createElement(_Tweets2.default, {
+	            tweets: this.state.tweetsFromServer,
+	            statuses: this.state.statuses,
+	            searchTweets: function searchTweets(tweetQuery) {
+	              return _this2._getTweets(tweetQuery);
+	            }
+	          })
+	        )
 	      );
+	    }
+	  }, {
+	    key: '_getTweets',
+	    value: function _getTweets() {
+	      var tweetQuery = arguments.length <= 0 || arguments[0] === undefined ? this.state.tweetRequest : arguments[0];
+	
+	      console.log('tweetQuery', tweetQuery);
+	      console.log('this.state.tweetRequest', this.state.tweetRequest);
+	      var args = tweetQuery.args;
+	
+	      console.log('args', args);
+	      cb.__call(
+	      // Pick twitter API endpoint
+	      "search_tweets", args, function (reply) {
+	        console.log(reply);
+	      },
+	      // this parameter required by codebird
+	      true);
 	    }
 	  }]);
 	
 	  return Project;
 	}(_react2.default.Component);
 	
+	// 1 - function to pass down query
+	// 2 - function to update <Project /> component state
+	// 3 - pass down props to <TweetList />
+	
+	/*
+	 pass down props of statues in <TweetList /> component map
+	 */
+	
+	// id
+	// id_str (stringified id)
+	// created_at (date)
+	// favorite_count
+	// retweet_count
+	// source (NOT SURE)
+	// text
+	//
+	
+	
 	exports.default = Project;
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27842,12 +28007,12 @@
 	 *
 	 *   firebase = require('firebase');
 	 */
-	__webpack_require__(253);
+	__webpack_require__(254);
 	module.exports = firebase;
 
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*! @license Firebase v3.2.1
@@ -28421,20 +28586,20 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(255);
+	module.exports = __webpack_require__(256);
 	
 
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
 		if(true)
-			module.exports = factory(__webpack_require__(256));
+			module.exports = factory(__webpack_require__(257));
 		else if(typeof define === 'function' && define.amd)
 			define(["firebase"], factory);
 		else {
@@ -28964,7 +29129,7 @@
 	;
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports) {
 
 	/*! @license Firebase v2.4.2
@@ -29250,196 +29415,7 @@
 
 
 /***/ },
-/* 257 */,
 /* 258 */
-/***/ function(module, exports) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
-
-/***/ },
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	/**
-	 * Created by jonlazarini on 16/08/16.
-	 */
-	
-	module.exports = {
-	  token: {
-	    key: "qrVsXyVBHIRPwHvxBkXjDTZfz",
-	    secret: "Izgvklu092Z2i05CTulxzl4n3A6IVi3gkjRUFLXaTRBM2OWNz6",
-	    accessToken: "159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",
-	    accessTokenSecret: "hsJ4TJgKGJS9EJJAn7UYMECq7KvUNcsM4HKV16XL0jAuE",
-	    requestUrl: "https://api.twitter.com/1.1/"
-	  }
-	};
-
-/***/ },
-/* 267 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _TweetList = __webpack_require__(268);
-	
-	var _TweetList2 = _interopRequireDefault(_TweetList);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by jonlazarini on 16/08/16.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
-	var Tweets = function (_React$Component) {
-	  _inherits(Tweets, _React$Component);
-	
-	  function Tweets() {
-	    _classCallCheck(this, Tweets);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Tweets).apply(this, arguments));
-	  }
-	
-	  _createClass(Tweets, [{
-	    key: 'render',
-	    value: function render() {
-	      console.log('this.props in Tweets', this.props);
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_TweetList2.default, {
-	          tweets: this.props.tweets,
-	          statuses: this.props.statuses
-	        })
-	      );
-	    }
-	  }]);
-	
-	  return Tweets;
-	}(_react2.default.Component);
-	
-	exports.default = Tweets;
-
-/***/ },
-/* 268 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by jonlazarini on 16/08/16.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-	
-	
-	var TweetList = function (_React$Component) {
-	  _inherits(TweetList, _React$Component);
-	
-	  function TweetList() {
-	    _classCallCheck(this, TweetList);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TweetList).apply(this, arguments));
-	  }
-	
-	  _createClass(TweetList, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      console.log('this.props in TweetList', this.props);
-	      var tweetList = this.props.tweets.map(function (tweet, index) {
-	        // must use => <Object> instead of { } if we are returning one object
-	        // only.
-	        console.log('this in tweetList:', _this2);
-	        return _react2.default.createElement(
-	          'li',
-	          { key: index },
-	          tweet
-	        );
-	      });
-	
-	      var statuses = this.props.statuses.map(function (status, index) {
-	        return _react2.default.createElement(
-	          'li',
-	          { key: index },
-	          ' ',
-	          status,
-	          ' '
-	        );
-	      });
-	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          tweetList
-	        ),
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          statuses
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return TweetList;
-	}(_react2.default.Component);
-	
-	exports.default = TweetList;
-
-/***/ },
-/* 269 */,
-/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {/**
@@ -30679,7 +30655,7 @@
 	            }
 	        // now, consider RequireJS and/or Node.js objects
 	        } else if ("function" === "function"
-	            && __webpack_require__(271)
+	            && __webpack_require__(260)
 	        ) {
 	            // look for xmlhttprequest module
 	            try {
@@ -30956,15 +30932,31 @@
 	
 	})();
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(258)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(259)(module)))
 
 /***/ },
-/* 271 */
+/* 259 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./codebird": 270,
-		"./codebird.js": 270
+		"./codebird": 258,
+		"./codebird.js": 258
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -30977,8 +30969,228 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 271;
+	webpackContext.id = 260;
 
+
+/***/ },
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _TweetList = __webpack_require__(268);
+	
+	var _TweetList2 = _interopRequireDefault(_TweetList);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by jonlazarini on 16/08/16.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	var Tweets = function (_React$Component) {
+	  _inherits(Tweets, _React$Component);
+	
+	  function Tweets() {
+	    _classCallCheck(this, Tweets);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Tweets).apply(this, arguments));
+	  }
+	
+	  _createClass(Tweets, [{
+	    key: 'render',
+	    value: function render() {
+	      console.log('this.props in Tweets', this.props);
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_TweetList2.default, {
+	          tweets: this.props.tweets,
+	          statuses: this.props.statuses,
+	          getTweets: this.props.searchTweets
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return Tweets;
+	}(_react2.default.Component);
+	
+	exports.default = Tweets;
+
+/***/ },
+/* 268 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by jonlazarini on 16/08/16.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	
+	var TweetList = function (_React$Component) {
+	  _inherits(TweetList, _React$Component);
+	
+	  function TweetList() {
+	    _classCallCheck(this, TweetList);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TweetList).apply(this, arguments));
+	  }
+	
+	  _createClass(TweetList, [{
+	    key: 'render',
+	    value: function render() {
+	      var tweetList = this.props.tweets.map(function (tweet, index) {
+	        // must use => <Object> instead of { } if we are returning one object
+	        // only.
+	        return _react2.default.createElement(
+	          'li',
+	          { key: index },
+	          tweet
+	        );
+	      });
+	
+	      var statuses = this.props.statuses.map(function (status, index) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: index },
+	          status.id_str,
+	          status.created_at,
+	          status.retweet_count,
+	          status.text
+	        );
+	      });
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          tweetList
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          statuses
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return TweetList;
+	}(_react2.default.Component);
+	
+	/*
+	* user.
+	* */
+	
+	
+	exports.default = TweetList;
+
+/***/ },
+/* 269 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	/**
+	 * Created by jonlazarini on 16/08/16.
+	 */
+	
+	module.exports = {
+	  token: {
+	    key: "qrVsXyVBHIRPwHvxBkXjDTZfz",
+	    secret: "Izgvklu092Z2i05CTulxzl4n3A6IVi3gkjRUFLXaTRBM2OWNz6",
+	    accessToken: "159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",
+	    accessTokenSecret: "hsJ4TJgKGJS9EJJAn7UYMECq7KvUNcsM4HKV16XL0jAuE",
+	    requestUrl: "https://api.twitter.com/1.1/"
+	  }
+	};
+
+/***/ },
+/* 270 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	/**
+	 * Created by jonlazarini on 12/08/16.
+	 */
+	
+	var React = __webpack_require__(1);
+	
+	module.exports = function (_React$Component) {
+	  _inherits(Error404, _React$Component);
+	
+	  function Error404() {
+	    _classCallCheck(this, Error404);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Error404).apply(this, arguments));
+	  }
+	
+	  _createClass(Error404, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h1',
+	          { className: 'text-center' },
+	          'Page not found'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Error404;
+	}(React.Component);
 
 /***/ }
 /******/ ]);

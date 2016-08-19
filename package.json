@@ -4,6 +4,7 @@
   "description": "React webpack starter template",
   "main": "lib/index.js",
   "dependencies": {
+    "axios": "^0.13.1",
     "codebird": "^2.6.0",
     "eslint-config-airbnb-base": "^5.0.2",
     "firebase": "^3.2.1",
@@ -23,7 +24,6 @@
     "carousel",
     "responsive"
   ],
-
   "repository": {
     "type": "git",
     "url": "git@github.com:krasimir/react-webpack-starter.git"
