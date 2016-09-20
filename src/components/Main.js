@@ -1,10 +1,10 @@
 import React from 'react';
 import TweetsContainer from '../containers/TweetsContainer'
-import '../../sass/main.sass';
+// import '../../sass/main.sass';
 
 class Main extends React.Component {
   render() {
-    console.log('MAIN this:', this);
+    // console.log('MAIN this:', this);
     return (
       <div className='container-fluid'>
         <div>
