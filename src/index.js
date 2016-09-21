@@ -24,6 +24,19 @@ Twatter API GET request
  https://api.twitter.com/1.1/search/tweets.json?q=
   */
 
+// Twatter API GET request
+const args = { q: "o2", count: 10 };
+cb.__call(
+  // Pick twitter API endpoint
+  "search_tweets",
+  args,
+  (reply) => {
+    console.log(reply);
+  },
+  // this parameter required by codebird
+  true
+);
+
 const appEntry = document.querySelector('#root');
 
 window.onload = () => {
