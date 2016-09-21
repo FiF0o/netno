@@ -6,6 +6,7 @@ import React from 'react';
 const Tweet = ({ id, avatar, first_name, last_name }) => {
   return (
     <div>
+      <h2>Toto</h2>
       <p>{ id }</p>
       <p>{ avatar }</p>
       <p>{ first_name }</p>

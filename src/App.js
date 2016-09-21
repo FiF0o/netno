@@ -4,10 +4,6 @@ import AppRoutes from './components/AppRoutes';
 import store from './store';
 import { Provider } from 'react-redux';
 import logo from './logo.svg';
-import './App.css';
-
-
-
 
 class App extends Component {
   render() {
