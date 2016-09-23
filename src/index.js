@@ -3,39 +3,25 @@ import ReactDOM from 'react-dom';
 import store from './store';
 import App from './App';
 
+
+// import jQuery from 'jquery';
+// console.log('$: ', jQuery)
+// window.$ = window.jQuery = jQuery;
+//
+// import Bootstrap from '../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js';
+// console.log('Bootstrap: ', Bootstrap)
+// window.Bootstrap = Bootstrap
+// Bootstrap.$ = jQuery;
+
 // executed `npm run eject` and added `npm install sass-loader
 // node-sass --save-dev` to use sass in the app
 import './sass/main.sass';
 
-// requires codebird API for twatter API OAuth
-import Codebird from 'codebird'
-const cb = new Codebird();
-
-// instantiate codebird to access twatter API
-import { key, secret } from '../keys'
-cb.setConsumerKey(key, secret);
-/*
- Token management
- https://apps.twitter.com/
- */
-
-/*
-Twatter API GET request
- https://api.twitter.com/1.1/search/tweets.json?q=
-  */
-
-// Twatter API GET request
-const args = { q: "o2", count: 10 };
-cb.__call(
-  // Pick twitter API endpoint
-  "search_tweets",
-  args,
-  (reply) => {
-    console.log(reply);
-  },
-  // this parameter required by codebird
-  true
-);
+// import codebirdAPI from './helpers/codebirdAPI'
+//
+// const tweetQ =  { q: "toto", count: 15 };
+// // loads Twatter API GET request to fetch tweets
+// codebirdAPI(tweetQ);
 
 const appEntry = document.querySelector('#root');
 

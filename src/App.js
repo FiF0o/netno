@@ -4,6 +4,7 @@ import AppRoutes from './components/AppRoutes';
 import store from './store';
 import { Provider } from 'react-redux';
 import logo from './logo.svg';
+import { Button } from 'react-bootstrap'
 
 class App extends Component {
   render() {
@@ -22,7 +23,11 @@ class App extends Component {
             { AppRoutes }
           </Router>
         </Provider>
-
+        <br/>
+        <br/>
+        <Button bsStyle="primary" bsSize="large" active>
+          Primary button
+        </Button>
       </div>
     );
   }
