@@ -3,7 +3,7 @@
  */
 import React from 'react';
 
-const Tweet = ({ id, avatar, first_name, last_name }) => {
+const Tweet = ({ id, avatar, first_name, last_name, created_at }) => {
   return (
     <div>
       <h2>Toto</h2>
@@ -11,6 +11,7 @@ const Tweet = ({ id, avatar, first_name, last_name }) => {
       <p>{ avatar }</p>
       <p>{ first_name }</p>
       <p>{ last_name }</p>
+      <p>{ created_at }</p>
     </div>
   )
 };

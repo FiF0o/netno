@@ -25,6 +25,8 @@ import { FETCHED_TWEET } from '../const'
  *  oauth_version="1.0"
  */
 
+
+
 // import { key } from '../../keys'
 
 // const headersQuery = {
@@ -52,7 +54,7 @@ const query = {q:'ta mere', count:'20'}
 //   },
 //   body: query
 // }
-
+//
 // const gettingTweets = ( q = obj ) => {
 //   console.log('q: ', q)
 //   return fetch(`https://api.twitter.com/1.1/search/tweets.json`, q )
@@ -66,7 +68,8 @@ const Codebird = require('codebird')
 import { key, secret } from '../../keys'
 
 const gettingTweets = (q = query) => {
-  // promisefied the codebird call
+  // promisefy the codebird call otherwise getTweetsAsync is returned as
+  // undefined
   return new Promise((resolve, reject) => {
     const cb = new Codebird;
     cb.setConsumerKey(key, secret);
@@ -81,9 +84,10 @@ const gettingTweets = (q = query) => {
 export const getTweetsAsync = (q = query) => dispatch => {
   // dispatch(fetchingTweets())
   gettingTweets(q)
+  // returns response from server (tweets), Twatter API
     .then(tweets => {
       // getting the statuses array of the codebird promise and removed
-      // .tojson() method as codebird is handling it
+      // .tojson() method as codebird is already handling it
       dispatch(fetchedTweets(tweets.statuses))
     })
 }
@@ -93,6 +97,7 @@ export const getTweetsAsync = (q = query) => dispatch => {
 function fetchedTweets(listTweets) {
   return {
     type: FETCHED_TWEET,
+    // tweets passed down when action is dispatched
     listTweets
   };
 }
