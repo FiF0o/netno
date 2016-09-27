@@ -4,6 +4,8 @@
 node_modules
 
 keys.js
+api
+config/credentials.json
 
 # testing
 coverage

@@ -40,22 +40,22 @@ child = exec(command, function(error, stdout, stderr){
 
 });
 
-// var da = new Date().getTime()
-// console.log('da unix timestamp', da)
+var da = new Date().getTime()
+console.log('da unix timestamp', da)
 
 
-// var yo = {
-//   url: 'https://api.twitter.com/1.1/search/tweets.json',
-//   headers: {
-//     'Authorization': `OAuth oauth_consumer_key="Fk3WUKRXNNYtGbSCTHVbCpQzy",oauth_nonce="edb4c70d068f4dbd4604e385e0ee0350",oauth_signature="VZEuUJlE1XARo%2F7pNPMqbn4v8bo%3D",oauth_signature_method="HMAC-SHA1",oauth_timestamp="${da}",oauth_token="159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",oauth_version="1.0"`,
-//     'Content-Type': 'application/x-www-form-urlencoded'
-//   },
-//   query: {
-//     count: 10,
-//     q: "yoyo"
-//   }
-// }
-// console.log('yo ', yo)
+var yo = {
+  url: 'https://api.twitter.com/1.1/search/tweets.json',
+  headers: {
+    'Authorization': `OAuth oauth_consumer_key="Fk3WUKRXNNYtGbSCTHVbCpQzy",oauth_nonce="edb4c70d068f4dbd4604e385e0ee0350",oauth_signature="VZEuUJlE1XARo%2F7pNPMqbn4v8bo%3D",oauth_signature_method="HMAC-SHA1",oauth_timestamp="${da}",oauth_token="159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",oauth_version="1.0"`,
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  query: {
+    count: 10,
+    q: "yoyo"
+  }
+}
+console.log('yo ', yo)
 //
 // app.get('/', function(req, res){
 //   // res.send('ta mere')
