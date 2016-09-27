@@ -1,11 +1,6 @@
 /**
  * Created by jonlazarini on 21/09/16.
  */
-// module.exports = {
-//   key: "i85Mpv1EtsFVcK5hzlbJ1BfHW",
-//   secret: "qvntnfL2aoPFmBzTUYjp4vnMq4ElashWIJW8UMOXuMwiEVI8tw"
-// }
-
 module.exports= {
   key: "i85Mpv1EtsFVcK5hzlbJ1BfHW",
   secret: "qvntnfL2aoPFmBzTUYjp4vnMq4ElashWIJW8UMOXuMwiEVI8tw",
