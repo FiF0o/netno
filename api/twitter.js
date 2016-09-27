@@ -16,7 +16,7 @@ exports.mentions = (req, res) => {
 
   oauth.get(url, credentials.accessToken, credentials.accessTokenSecret, (err, data) => {
     if (err) {
-      console.error(err.stack)
+      console.error(err)
       res.status(500).send('Error: could not retrieve mentions')
     } else {
       console.log(util.inspect(data))
