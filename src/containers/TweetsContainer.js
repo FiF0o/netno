@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 
 class TweetsContainer extends React.Component {
   componentDidMount() {
-    store.dispatch(getTweetsAsync())
+    store.dispatch(getTweetsAsync('zgeg'))
   }
 
   render(){
