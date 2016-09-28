@@ -23,6 +23,7 @@ const mapStateToProps = (state) => {
 
 class TweetsContainer extends React.Component {
   componentDidMount() {
+    // passing q as a tweet param
     store.dispatch(getTweetsAsync('zgeg'))
   }
 

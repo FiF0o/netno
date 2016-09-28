@@ -1,10 +1,10 @@
 import React from 'react';
 import TweetsContainer from '../containers/TweetsContainer'
+import SearchTweetContainer from '../containers/SearchTweetContainer'
 // import '../../sass/main.sass';
 
 class Main extends React.Component {
   render() {
-    // console.log('MAIN this:', this);
     return (
       <div className='container-fluid'>
         <div>
@@ -18,6 +18,9 @@ class Main extends React.Component {
         </div>
         <div className='container'>
           { this.props.children }
+        </div>
+        <div>
+          <SearchTweetContainer />
         </div>
         <div>
           <br/>
