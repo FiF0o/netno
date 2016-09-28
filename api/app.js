@@ -9,6 +9,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   next()
 })
+
 app.get('/mentions', twitter.mentions)
 app.get('/search', twitter.search_tweets)
 
