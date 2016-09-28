@@ -6,6 +6,10 @@ import { FETCHED_TWEET } from '../const'
 /*
 // fetch REST API methods and headers examples
 // https://davidwalsh.name/fetch
+//
+// fetch Auth header example
+// http://stackoverflow.com/questions/30203044/using-an-authorization-header-with-fetch-in-react-native
+//
 */
 
 /*
@@ -26,46 +30,43 @@ import { FETCHED_TWEET } from '../const'
  */
 
 
+// https://davidwalsh.name/fetch
 
-// import { key } from '../../keys'
+// find Stack Overflow - example
+// http://stackoverflow.com/questions/30203044/using-an-authorization-header-with-fetch-in-react-native
 
-// const headersQuery = {
-//   'Authorization': 'OAuth '+btoa('oauth_consumer_key=qrVsXyVBHIRPwHvxBkXjDTZfz')
-//   +btoa('')
-//     oauth_nonce="edb4c70d068f4dbd4604e385e0ee0350",
-//   oauth_signature="VZEuUJlE1XARo%2F7pNPMqbn4v8bo%3D",
-//   oauth_signature_method="HMAC-SHA1", oauth_timestamp="1474552392",
-//   oauth_token="159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",
-//   oauth_version="1.0"
-// }
-// 'Content-Type': 'application/x-www-form-urlencoded'
-
-//  curl --get 'https://api.twitter.com/1.1/statuses/mentions_timeline.json' --data 'amp%3Bsince_id=14927799&count=2' --header 'Authorization: OAuth oauth_consumer_key="qrVsXyVBHIRPwHvxBkXjDTZfz", oauth_nonce="5c56ea8dc275c8d6a9499d7e5a1473da", oauth_signature="K%2Bu7kheUaVQvN%2BEOokD0D%2FFOsws%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1474574542", oauth_token="159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT", oauth_version="1.0"' --verbose
+import { key, secret } from '../../keys'
+// console.log('key:, ', key)
 
 const query = {q:'ta mere', count:'20'}
 
 // const obj = {
-//   method: 'GET',
-//   mode:'no-cors',
+//   method: 'post',
+//   mode: 'no-cors',
 //   dataType: 'json',
 //   headers: {
 //     'Authorization': `OAuth oauth_consumer_key="${key}",oauth_nonce="edb4c70d068f4dbd4604e385e0ee0350",oauth_signature="VZEuUJlE1XARo%2F7pNPMqbn4v8bo%3D",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1474552392",oauth_token="159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",oauth_version="1.0"`,
 //     'Content-Type': 'application/x-www-form-urlencoded'
 //   },
-//   body: query
+//   body: 'q=camarche&count=1',
+//   'Content-Type': 'application/x-www-form-urlencoded'
 // }
+
+// console.log('obj:, ', obj)
 //
-// const gettingTweets = ( q = obj ) => {
-//   console.log('q: ', q)
-//   return fetch(`https://api.twitter.com/1.1/search/tweets.json`, q )
-//   // return fetch(`https://api.twitter.com/1.1/statuses/mentions_timeline.json`, q )
+// const tata = () => {
+//   return fetch('http://localhost:2000/search?q=kikou&count=1')
+// };
 //
-// }
-// import codebirdAPI from '../helpers/codebirdAPI'
-// console.log(codebirdAPI)
+// tata();
+
+const toto = (twitterQ = query) => {
+  console.log('twitterQ: ', twitterQ)
+  return fetch('http://localhost:2000/search', twitterQ)
+}
+toto(query);
 
 const Codebird = require('codebird')
-import { key, secret } from '../../keys'
 
 const gettingTweets = (q = query) => {
   // promisefy the codebird call otherwise getTweetsAsync is returned as

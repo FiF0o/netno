@@ -10,4 +10,6 @@ app.use((req, res, next) => {
   next()
 })
 app.get('/mentions', twitter.mentions)
+app.get('/search', twitter.search_tweets)
+
 app.listen(port, () => console.log('Magic happens on port ' + port))
