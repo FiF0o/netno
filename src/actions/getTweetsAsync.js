@@ -36,38 +36,35 @@ import { FETCHED_TWEET } from '../const'
 // http://stackoverflow.com/questions/30203044/using-an-authorization-header-with-fetch-in-react-native
 
 import { key, secret } from '../../keys'
-console.log('key:, ', key)
+// console.log('key:, ', key)
 
 const query = {q:'ta mere', count:'20'}
 
-const obj = {
-  method: 'post',
-  mode: 'no-cors',
-  dataType: 'json',
-  headers: {
-    'Authorization': `OAuth oauth_consumer_key="${key}",oauth_nonce="edb4c70d068f4dbd4604e385e0ee0350",oauth_signature="VZEuUJlE1XARo%2F7pNPMqbn4v8bo%3D",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1474552392",oauth_token="159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",oauth_version="1.0"`,
-    'Content-Type': 'application/x-www-form-urlencoded'
-  },
-  body: 'q=camarche&count=1',
-  'Content-Type': 'application/x-www-form-urlencoded'
-}
+// const obj = {
+//   method: 'post',
+//   mode: 'no-cors',
+//   dataType: 'json',
+//   headers: {
+//     'Authorization': `OAuth oauth_consumer_key="${key}",oauth_nonce="edb4c70d068f4dbd4604e385e0ee0350",oauth_signature="VZEuUJlE1XARo%2F7pNPMqbn4v8bo%3D",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1474552392",oauth_token="159806486-2uHUKgCF0hO1LiqJVDV7mLFfs14QDPTY7pcuhKTT",oauth_version="1.0"`,
+//     'Content-Type': 'application/x-www-form-urlencoded'
+//   },
+//   body: 'q=camarche&count=1',
+//   'Content-Type': 'application/x-www-form-urlencoded'
+// }
 
-console.log('obj:, ', obj)
+// console.log('obj:, ', obj)
 //
-const tata = () => {
-  return fetch('http://localhost:2000/search?q=kikou&count=1')
-};
+// const tata = () => {
+//   return fetch('http://localhost:2000/search?q=kikou&count=1')
+// };
+//
+// tata();
 
-tata();
-
-const toto = (query = obj) => {
-  console.log('query: ', query)
-    fetch('http://localhost:2000/search', query)
-    .then((response) => {
-      return console.log(response)
-    })
+const toto = (twitterQ = query) => {
+  console.log('twitterQ: ', twitterQ)
+  return fetch('http://localhost:2000/search', twitterQ)
 }
-toto(obj);
+toto(query);
 
 const Codebird = require('codebird')
 
