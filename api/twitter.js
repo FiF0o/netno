@@ -11,7 +11,9 @@ exports.mentions = (req, res) => {
 
 exports.search_tweets = (req, res) => {
   let url = `${twitterApiBaseUrl}/search/tweets.json?`
-  if (req.query.q) url += `q=${req.query.q}&`
+  const enc = encodeURIComponent(`${req.query.q}`)
+
+  if (req.query.q) url += `q=${enc}&`
   if (req.query.count) url += `count=${req.query.count}&`
   oauth.fetch(url, res)
 }
