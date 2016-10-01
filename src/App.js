@@ -3,8 +3,7 @@ import { Router, hashHistory } from 'react-router';
 import AppRoutes from './components/AppRoutes';
 import store from './store';
 import { Provider } from 'react-redux';
-import logo from './logo.svg';
-import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
 
 class App extends Component {
   render() {

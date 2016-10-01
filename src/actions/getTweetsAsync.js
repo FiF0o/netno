@@ -5,9 +5,10 @@ import { FETCHED_TWEET } from '../const'
 // https://dev.twitter.com/oauth/overview/authorizing-requests
 // http://stackoverflow.com/questions/30203044/using-an-authorization-header-with-fetch-in-react-native
 
-const fetchedTweets = (tweets) => ({
+const fetchedTweets = (tweetList) => ({
   type: FETCHED_TWEET,
-  tweets,
+  tweetList: tweetList,
+  hasLoaded: false
 })
 
 export const getTweetsAsync = (query) => {

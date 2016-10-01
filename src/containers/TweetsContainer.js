@@ -16,9 +16,9 @@ const mapDispatchToProps = (dispatch) =>
   }, dispatch)
 
 const mapStateToProps = (state) => {
-  console.log('state.tweets in TweetsContainer', state.tweets)
+  console.log('state.tweets in TweetsContainer', state)
   // .tweets is the reducer which is a data subset of the state
-  return { tweetList: state.tweets }
+  return { tweetList: state.tweets.tweetList }
 }
 
 class TweetsContainer extends React.Component {

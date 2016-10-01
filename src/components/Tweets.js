@@ -3,15 +3,24 @@
  */
 import React from 'react';
 
-const Tweet = ({ id, avatar, first_name, last_name, created_at }) => {
+const Tweet = ({ created_at, favorite_count, retweet_count, text, source, user }) => {
+  // extracts user info from tweet (tParams)
+  const userInfo = { ...user };
   return (
     <div>
-      <h2>Toto</h2>
-      <p>{ id }</p>
-      <p>{ avatar }</p>
-      <p>{ first_name }</p>
-      <p>{ last_name }</p>
-      <p>{ created_at }</p>
+      <div className="col-md-6">
+        <p>{ created_at }</p>
+        <p>{ favorite_count }</p>
+        <p>{ retweet_count }</p>
+        <p>{ text }</p>
+        <p>{ source }</p>
+      </div>
+      <div>
+        <p>{ userInfo.name }</p>
+        <p>{ userInfo.location }</p>
+        <p>{ userInfo.description }</p>
+        <p>{ userInfo.profile_image_url_https }</p>
+      </div>
     </div>
   )
 };
