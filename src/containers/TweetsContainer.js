@@ -18,14 +18,17 @@ const mapDispatchToProps = (dispatch) =>
 const mapStateToProps = (state) => {
   console.log('state.tweets in TweetsContainer', state)
   // .tweets is the reducer which is a data subset of the state
-  return { tweetList: state.tweets.tweetList }
+  return {
+    tweetList: state.tweets.tweetList,
+    hasLoaded: state.tweets.hasLoaded
+  }
 }
 
 class TweetsContainer extends React.Component {
-  componentDidMount() {
-    // passing q as a tweet param
-    store.dispatch(getTweetsAsync('zgeg'))
-  }
+  // componentDidMount() {
+  //   // passing q as a tweet param
+  //   store.dispatch(getTweetsAsync('zgeg'))
+  // }
 
   render(){
     return (
@@ -33,7 +36,6 @@ class TweetsContainer extends React.Component {
     )
   }
 }
-
 // destructuring this.props to pass it down to the child component Tweets
 // better use Tweets(this.props) for performance, jsx recompiling
 

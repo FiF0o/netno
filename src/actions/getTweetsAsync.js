@@ -11,6 +11,10 @@ const fetchedTweets = (tweetList) => ({
   hasLoaded: false
 })
 
+/** debug
+ * curl -s http://localhost:2000/search?q=zgeg | prettyjson
+ */
+
 export const getTweetsAsync = (query) => {
   const encQuery = encodeURIComponent(`${query}`)
   return (dispatch) => fetch(`http://localhost:2000/search?q=${encQuery}`)

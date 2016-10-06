@@ -8,14 +8,15 @@ import React from 'react';
  */
 import { Route, IndexRoute } from 'react-router';
 
-import Main from './Main';
-import Home from './Home';
+import Main from '../Main';
+import Home from '../pages/Home';
+import Login from '../pages/Login'
+import Search from '../pages/Search'
 
 export default (
   <Route path='/' component={ Main }>
     <IndexRoute component={ Home } />
+    <Route path='login' component={ Login }/>
+    <Route path='search' component={ Search }/>
   </Route>
-);
-//
-// <Route path='login' component={ Login }/>
-// <Route path=':username/:project' component={ Project } />
+)

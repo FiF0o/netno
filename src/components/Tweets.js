@@ -25,10 +25,11 @@ const Tweet = ({ created_at, favorite_count, retweet_count, text, source, user }
   )
 };
 
-const Tweets = ({ tweetList }) => {
+const Tweets = ({ tweetList, hasLoaded }) => {
   return (
     <div>
-      <ul>
+      { hasLoaded ?
+        <ul>
         {
           tweetList.map(tweet => {
             const tParams = {
@@ -38,10 +39,14 @@ const Tweets = ({ tweetList }) => {
               <li key={tweet.id} >
                 <Tweet { ...tParams } />
               </li>
-             )
+            )
           })
         }
-      </ul>
+      </ul> :
+        <div>
+          <h1>Fetch Tweets</h1>
+        </div>
+      }
     </div>
   )
 };
