@@ -4,8 +4,8 @@ Below you will find some information on how to perform common tasks.
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/template/README.md).
 
 ## Start project
-run `npm run dev`
-run the server to create requests to Twitter API `node api/app.js`
+run `npm run dev` - running on port 3000
+run the server to create requests to Twitter API `node api/app.js` - running on port 2000
 
 
 ## Table of Contents
