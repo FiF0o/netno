@@ -1,6 +1,7 @@
-# React webpack starter template
+# React Redux webpack starter template using twitter API
 This app uses twitter API to fetch tweet feeds.</br>
-The aim of this repository is to provide a template for developing [React](https://facebook.github.io/react/) based applications using ES6 syntax and [webpack](https://webpack.github.io/) as a module bundler.
+The aim of this repository is to provide a template for developing [React](https://facebook.github.io/react/) based applications using ES6 syntax and [webpack](https://webpack.github.io/) as a module bundler.</br>
+Redux is available on `refactor-redux` branch.
 
 ## Scripts
 * Twitter API server-side runs on `process.env.PORT` or `:2000`, use `node api/app.js` to fire the API.
